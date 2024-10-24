@@ -6,7 +6,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<ITodoRepo, TodoRepo>();
-// TODO add dbcontext
 
 var app = builder.Build();
 
@@ -26,11 +25,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-
-
-/// TODO remove
-//var db = new TodoContext();
-//var items = db.TodoItems.ToList();
 
 app.Run();

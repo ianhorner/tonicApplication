@@ -8,7 +8,7 @@ namespace TonicApplication.Repos
         private TodoContext _todoContext;
         public TodoRepo()
         {
-            _todoContext = new TodoContext(); // TODO use DI
+            _todoContext = new TodoContext(); // I know I should add this to the DI container, but I'm running low on time
         }
 
         public void Insert(string text)
