@@ -5,7 +5,7 @@
 namespace TonicApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class NewMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,8 +16,7 @@ namespace TonicApplication.Migrations
                 {
                     TodoItemId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Text = table.Column<string>(type: "TEXT", nullable: false),
-                    IsComplete = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Text = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

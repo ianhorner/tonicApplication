@@ -1,11 +1,12 @@
 using TonicApplication.EF;
 using TonicApplication.Entities;
+using TonicApplication.Repos;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddTransient<ITodoRepo, TodoRepo>();
+// TODO add dbcontext
 
 var app = builder.Build();
 
@@ -29,17 +30,7 @@ app.MapControllerRoute(
 
 
 /// TODO remove
-
 //var db = new TodoContext();
-//db.Add(new TodoItem
-//{
-//    Text = "My text 2",
-//    IsComplete = false
-//});
-//db.SaveChanges();
-
 //var items = db.TodoItems.ToList();
-
-///
 
 app.Run();

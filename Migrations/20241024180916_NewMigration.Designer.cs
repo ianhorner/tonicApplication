@@ -10,8 +10,8 @@ using TonicApplication.EF;
 namespace TonicApplication.Migrations
 {
     [DbContext(typeof(TodoContext))]
-    [Migration("20241024160329_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241024180916_NewMigration")]
+    partial class NewMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,9 +23,6 @@ namespace TonicApplication.Migrations
                 {
                     b.Property<int>("TodoItemId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("IsComplete")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Text")

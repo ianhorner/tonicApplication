@@ -1,6 +1,42 @@
-﻿namespace TonicApplication.Repos
+﻿using TonicApplication.EF;
+using TonicApplication.Entities;
+
+namespace TonicApplication.Repos
 {
-    public class TodoRepo
+    public class TodoRepo : ITodoRepo
     {
+        private TodoContext _todoContext;
+        public TodoRepo()
+        {
+            _todoContext = new TodoContext(); // TODO use DI
+        }
+
+        public void Insert(string text)
+        {
+            var newItem = new TodoItem()
+            {
+                Text = text
+            };
+
+            _todoContext.TodoItems.Add(newItem);
+            _todoContext.SaveChanges();
+        }
+
+        public void Update(TodoItem item)
+        {
+            _todoContext.TodoItems.Update(item);
+            _todoContext.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            _todoContext.TodoItems.Remove(new TodoItem() { TodoItemId = id });
+            _todoContext.SaveChanges();
+        }
+
+        public IEnumerable<TodoItem> GetAll()
+        {
+            return _todoContext.TodoItems.ToList();
+        }
     }
 }
